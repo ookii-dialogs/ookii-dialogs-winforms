@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{B82D79EE-58EA-44D5-9913-650BD9EFA8E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ookii.Dialogs.WinForms.Sample", "sample\Ookii.Dialogs.WinForms.Sample\Ookii.Dialogs.WinForms.Sample.csproj", "{D52F3B1C-03B3-41B1-A15E-E23FF6877939}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{68ED7CF2-8E33-460B-AF18-15143BF954F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ookii.Dialogs.WinForms", "src\Ookii.Dialogs.WinForms\Ookii.Dialogs.WinForms.csproj", "{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{22DAE784-2CFA-4C9C-99FE-3E9EF5760F2B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D52F3B1C-03B3-41B1-A15E-E23FF6877939} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
+		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0} = {68ED7CF2-8E33-460B-AF18-15143BF954F6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {223C1782-9064-416B-B539-EEBCABF427F5}
+	EndGlobalSection
+EndGlobal
