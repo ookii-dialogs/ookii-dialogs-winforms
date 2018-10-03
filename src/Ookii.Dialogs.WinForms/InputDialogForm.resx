@@ -265,6 +265,6 @@
     <value>InputDialogForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Ookii.Dialogs.ExtendedForm, Ookii.Dialogs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249</value>
+    <value>Ookii.Dialogs.ExtendedForm, Ookii.Dialogs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>
