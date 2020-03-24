@@ -96,8 +96,8 @@ The `ExtendedForm` class serves as an alternative base class for forms, and prov
 
 ---
 
-Copyright (c) Sven Groot 2009
+Copyright (c) Sven Groot 2009-2018
 
-Copyright (c) Caio Proiete 2018
+Copyright (c) Caio Proiete 2018-2020
 
 See [LICENSE](LICENSE) for details
