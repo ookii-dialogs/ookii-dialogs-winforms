@@ -4,7 +4,11 @@
 
 **Ookii.Dialogs.WinForms** is a class library for .NET Windows Forms applications providing several common dialogs. Included are classes for task dialogs, credential dialogs, progress dialogs, input dialogs, and common file dialogs.
 
-### Getting started
+## Give a Star! :star:
+
+If you like or are using this project please give it a star. Thanks!
+
+## Getting started
 
 Install the [Ookii.Dialogs.WinForms](https://www.nuget.org/packages/Ookii.Dialogs.WinForms/) package from NuGet:
 
