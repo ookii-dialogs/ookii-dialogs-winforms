@@ -1,8 +1,19 @@
-# Ookii.Dialogs.WinForms [![NuGet Version](http://img.shields.io/nuget/v/Ookii.Dialogs.WinForms.svg?style=flat)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms/)
+ README.md |
+|:---|
 
-## Overview
+<div align="center">
 
-**Ookii.Dialogs.WinForms** is a class library for .NET Windows Forms applications providing several common dialogs. Included are classes for task dialogs, credential dialogs, progress dialogs, input dialogs, and common file dialogs.
+<img src="assets/ookii-dialogs-winforms-nuget.png" alt="Ookii.Dialogs.WinForms" width="100" />
+
+</div>
+
+<h1 align="center">Ookii.Dialogs.WinForms</h1>
+<div align="center">
+
+A class library for Windows Forms applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialogs, and common file dialogs.
+
+[![NuGet Version](http://img.shields.io/nuget/v/Ookii.Dialogs.WinForms.svg?style=flat)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms) [![NuGet Downloads](https://img.shields.io/nuget/dt/Ookii.Dialogs.WinForms.svg)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms) [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.5-informational)](https://dotnet.microsoft.com/download)
+</div>
 
 ## Give a Star! :star:
 
@@ -18,9 +29,7 @@ Install-Package Ookii.Dialogs.WinForms
 
 The included sample application [`Ookii.Dialogs.WinForms.Sample`](sample/Ookii.Dialogs.WinForms.Sample/) demonstrate the dialogs for Windows Forms. View the source of this application to see how to use the dialogs.
 
-N.B.: **Ookii.Dialogs.WinForms** requires [Microsoft .NET Framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=30653) or higher.
-
-### WPF compatibility
+### Windows Presentation Foundation (WPF) compatibility
 
 If you're looking to use these common dialogs on a WPF application, check out [Ookii.Dialogs.Wpf](https://github.com/augustoproiete/ookii-dialogs-wpf).
 
@@ -30,7 +39,9 @@ If you're looking to use these common dialogs on a WPF application, check out [O
 
 [Task dialogs](https://docs.microsoft.com/en-us/windows/desktop/Controls/task-dialogs-overview) are a new type of dialog first introduced in Windows Vista. They provide a superset of the message box functionality.
 
-![A task dialog](assets/sample-task-dialog.png)
+![A task dialog as it appears on Windows 10](assets/sample-task-dialog-win10.png)
+
+![A task dialog with command links as it appears on Windows 10](assets/sample-task-dialog-command-links-win10.png)
 
 The `Ookii.Dialogs.WinForms.TaskDialog` classe provide access to the task dialog functionality. The `TaskDialog` class inherits from `System.ComponentModel.Component` and offers full support for the Windows Forms designer and component designer of Visual Studio.
 
@@ -40,7 +51,7 @@ The `TaskDialog` class requires Windows Vista or a later version of Windows. Win
 
 Progress dialogs are a common dialog to show progress during operations that may take a long time. They are used extensively in the Windows shell, and an API has been available since Windows 2000.
 
-![A progress dialog as it appears on Windows Vista and later](assets/sample-progress-dialog.png)
+![A progress dialog as it appears on Windows 10](assets/sample-progress-dialog-win10.png)
 
 The `Ookii.Dialogs.WinForms.ProgressDialog` class provide a wrapper for the Windows progress dialog API. The `ProgressDialog` class inherits from `System.ComponentModel.Component` and offers full support for the Windows Forms designer and component designer of Visual Studio. The `ProgressDialog` class resembles the `System.ComponentModel.BackgroundWorker` class and can be used in much the same way as that class.
 
@@ -54,7 +65,7 @@ When using Windows 7 or later, the `ProgressDialog` class automatically provides
 
 The `Ookii.Dialogs.WinForms.CredentialDialog` class provide wrappers for the `CredUI` functionality first introduced in Windows XP. This class provides functionality for saving and retrieving generic credentials, as well as displaying the credential UI dialog. This class does not support all functionality of `CredUI`; only generic credentials are supported, thing such as domain credentials or alternative authentication providers (e.g. smart cards or biometric devices) are not supported.
 
-![A credential dialog as it appears on Windows Vista and later](assets/sample-credential-dialog.png)
+![A credential dialog as it appears on Windows 10](assets/sample-credential-dialog-win10.png)
 
 The `CredentialDialog` class inherits from `System.ComponentModel.Component` and offers full support for the Windows Forms designer and component designer of Visual Studio.
 
@@ -64,7 +75,7 @@ On Windows XP, the `CredentialDialog` class will use the `CredUIPromptForCredent
 
 The input dialog is a dialog that can be used to prompt the user for a single piece of text. Its functionality is reminiscent of the Visual Basic `InputBox` function, only with a cleaner API and UI.
 
-![An input dialog as it appears on Windows Vista and later](assets/sample-input-dialog.png)
+![An input dialog as it appears on Windows 10](assets/sample-input-dialog-win10.png)
 
 The `Ookii.Dialogs.WinForms.InputDialog` class provides the input dialog functionality for Windows Forms.
 
@@ -76,7 +87,7 @@ The `InputDialog` class inherits from `System.ComponentModel.Component` and offe
 
 Windows Vista introduced a new style of common file dialogs. As of .NET 3.5 SP1, the Windows Forms `OpenFileDialog` and `SaveFileDialog` class will automatically use the new style under most circumstances; however, some settings (such as setting `ShowReadOnly` to `true`) still cause it to revert to the old dialog. The `FolderBrowserDialog` still uses the old style.
 
-![The Vista-style folder browser dialog on Windows 7](assets/sample-folderbrowser-dialog.png)
+![The Vista-style folder browser dialog as it appears on Windows 10](assets/sample-folderbrowser-dialog-win10.png)
 
 The `Ookii.Dialogs.WinForms.VistaOpenFileDialog`, `Ookii.Dialogs.WinForms.VistaSaveFileDialog` and `Ookii.Dialogs.WinForms.VistaFolderBrowserDialog` provide these dialogs for Windows Forms (note that in the case of the `OpenFileDialog` and `SaveFileDialog` it is recommended to use the built-in .NET classes unless you hit one of the scenarios where those classes use the old dialogs).
 
@@ -94,10 +105,10 @@ The `Glass` class provides functionality for extending Aero glass into the clien
 
 The `ExtendedForm` class serves as an alternative base class for forms, and provides functionality to automatically use the system font (e.g. Tahoma on XP and Segoe UI on Vista and later), and easy access to some of the functionality of the `Glass` class.
 
+## Release History
+
+Click on the [Releases](https://github.com/augustoproiete/ookii-dialogs-winforms/releases) tab on GitHub.
+
 ---
 
-Copyright (c) Sven Groot 2009-2018
-
-Copyright (c) Caio Proiete 2018-2020
-
-See [LICENSE](LICENSE) for details
+_Copyright &copy; 2009-2020 Ookii Dialogs Contributors - Provided under the [BSD 3-Clause "New" or "Revised" License](LICENSE)._
