@@ -39,6 +39,7 @@ namespace Ookii.Dialogs.WinForms
         private string _input;
         private int _maxLength = Int16.MaxValue;
         private bool _usePasswordMasking;
+        private bool _multiLine;
 
         /// <summary>
         /// Event raised when the value of the <see cref="Input"/> property changes.
@@ -181,6 +182,19 @@ namespace Ookii.Dialogs.WinForms
         }
 
         /// <summary>
+        /// Gets or sets a value that indicates whether the input field will have multiline support.
+        /// </summary>
+        /// <value>
+        /// <see langword="true" /> if the input TextBox is multiline; otherwise, <see langword="false" />. The default value is <see langword="false" />.
+        /// </value>
+        [Category("Behavior"), Description("Indicates whether the input field will have multiline support."), DefaultValue(false)]
+        public bool MultiLine
+        {
+            get { return _multiLine; }
+            set { _multiLine = value; }
+        }
+
+        /// <summary>
         /// Raises the <see cref="InputChanged"/> event.
         /// </summary>
         /// <param name="e">The <see cref="EventArgs"/> containing data for the event.</param>
@@ -224,10 +238,13 @@ namespace Ookii.Dialogs.WinForms
                 frm.Input = Input;
                 frm.UsePasswordMasking = UsePasswordMasking;
                 frm.MaxLength = MaxLength;
+                frm.MultiLine = MultiLine;
                 frm.OkButtonClicked += new EventHandler<OkButtonClickedEventArgs>(InputBoxForm_OkButtonClicked);
+
                 DialogResult result = frm.ShowDialog(owner);
                 if( result == DialogResult.OK )
                     Input = frm.Input;
+
                 return result;
             }
         }
