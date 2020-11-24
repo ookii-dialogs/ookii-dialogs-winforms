@@ -67,7 +67,7 @@ namespace Ookii.Dialogs.WinForms
             set { _inputTextBox.UseSystemPasswordChar = value; }
         }
 
-        public bool MultiLine
+        public bool Multiline
         {
             get { return _inputTextBox.Multiline; }
             set {

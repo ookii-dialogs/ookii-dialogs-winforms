@@ -188,7 +188,7 @@ namespace Ookii.Dialogs.WinForms
         /// <see langword="true" /> if the input TextBox is multiline; otherwise, <see langword="false" />. The default value is <see langword="false" />.
         /// </value>
         [Category("Behavior"), Description("Indicates whether the input field will have multiline support."), DefaultValue(false)]
-        public bool MultiLine
+        public bool Multiline
         {
             get { return _multiLine; }
             set { _multiLine = value; }
@@ -238,7 +238,7 @@ namespace Ookii.Dialogs.WinForms
                 frm.Input = Input;
                 frm.UsePasswordMasking = UsePasswordMasking;
                 frm.MaxLength = MaxLength;
-                frm.MultiLine = MultiLine;
+                frm.Multiline = Multiline;
                 frm.OkButtonClicked += new EventHandler<OkButtonClickedEventArgs>(InputBoxForm_OkButtonClicked);
 
                 DialogResult result = frm.ShowDialog(owner);
