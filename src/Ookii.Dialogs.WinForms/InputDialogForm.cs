@@ -67,6 +67,36 @@ namespace Ookii.Dialogs.WinForms
             set { _inputTextBox.UseSystemPasswordChar = value; }
         }
 
+        public bool MultiLine
+        {
+            get { return _inputTextBox.Multiline; }
+            set {
+                if (value == _inputTextBox.Multiline) return;
+
+                _inputTextBox.Multiline = value;
+
+                int offset;
+
+                if(value)
+                {
+                    AcceptButton = null;
+
+                    offset = _inputTextBox.Height * 2;
+                    _inputTextBox.Top -= offset;
+                    _inputTextBox.Height += offset;
+                    Height += offset;
+                    return;
+                }
+
+                AcceptButton = _okButton;
+
+                offset = _inputTextBox.Height / 3 * 2;
+                Height -= offset;
+                _inputTextBox.Top += offset;
+                _inputTextBox.Height -= offset;
+            }
+        }
+
         protected virtual void OnOkButtonClicked(OkButtonClickedEventArgs e)
         {
             if( OkButtonClicked != null )

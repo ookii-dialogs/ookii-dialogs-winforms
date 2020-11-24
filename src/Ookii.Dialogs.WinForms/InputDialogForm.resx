@@ -125,6 +125,9 @@
   <data name="_inputTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 69</value>
   </data>
+  <data name="_inputTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
   <data name="_inputTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>319, 20</value>
   </data>
@@ -265,6 +268,6 @@
     <value>InputDialogForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Ookii.Dialogs.ExtendedForm, Ookii.Dialogs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Ookii.Dialogs.WinForms.ExtendedForm, Ookii.Dialogs.WinForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158</value>
   </data>
 </root>
