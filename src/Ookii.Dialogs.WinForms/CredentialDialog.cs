@@ -401,6 +401,80 @@ namespace Ookii.Dialogs.WinForms
         /// <summary>
         /// Shows the credentials dialog as a modal dialog with the specified owner.
         /// </summary>
+        /// <param name="owner">The <see cref="IntPtr"/> Win32 handle that owns the credentials dialog.</param>
+        /// <returns><see cref="DialogResult.OK" /> if the user clicked OK; otherwise, <see cref="DialogResult.Cancel" />.</returns>
+        /// <remarks>
+        /// <para>
+        ///   The credentials dialog will not be shown if one of the following conditions holds:
+        /// </para>
+        /// <list type="bullet">
+        ///   <item>
+        ///     <description>
+        ///       <see cref="UseApplicationInstanceCredentialCache"/> is <see langword="true"/> and the application instance
+        ///       credential cache contains credentials for the specified <see cref="Target"/>, even if <see cref="ShowUIForSavedCredentials"/>
+        ///       is <see langword="true"/>.
+        ///     </description>
+        ///   </item>
+        ///   <item>
+        ///     <description>
+        ///       <see cref="ShowSaveCheckBox"/> is <see langword="true"/>, <see cref="ShowUIForSavedCredentials"/> is <see langword="false"/>, and the operating system credential store
+        ///       for the current user contains credentials for the specified <see cref="Target"/>.
+        ///     </description>
+        ///   </item>
+        /// </list>
+        /// <para>
+        ///   In these cases, the <see cref="Credentials"/>, <see cref="UserName"/> and <see cref="Password"/> properties will
+        ///   be set to the saved credentials and this function returns immediately, returning <see cref="DialogResult.OK"/>.
+        /// </para>
+        /// <para>
+        ///   If the <see cref="ShowSaveCheckBox"/> property is <see langword="true"/>, you should call <see cref="ConfirmCredentials"/>
+        ///   after validating if the provided credentials are correct.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="CredentialException">An error occurred while showing the credentials dialog.</exception>
+        /// <exception cref="InvalidOperationException"><see cref="Target"/> is an empty string ("").</exception>
+        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
+        public DialogResult ShowDialog(IntPtr owner)
+        {
+            if( string.IsNullOrEmpty(_target) )
+                throw new InvalidOperationException(Properties.Resources.CredentialEmptyTargetError);
+
+            UserName = "";
+            Password = "";
+            IsStoredCredential = false;
+
+            if( RetrieveCredentialsFromApplicationInstanceCache() )
+            {
+                IsStoredCredential = true;
+                _confirmTarget = Target;
+                return DialogResult.OK;
+            }
+
+            bool storedCredentials = false;
+            if( ShowSaveCheckBox && RetrieveCredentials() )
+            {
+                IsSaveChecked = true;
+                if( !ShowUIForSavedCredentials )
+                {
+                    IsStoredCredential = true;
+                    _confirmTarget = Target;
+                    return DialogResult.OK;
+                }
+                storedCredentials = true;
+            }
+
+            IntPtr ownerHandle = owner == null ? NativeMethods.GetActiveWindow() : owner;
+            bool result;
+            if( NativeMethods.IsWindowsVistaOrLater )
+                result = PromptForCredentialsCredUIWin(ownerHandle, storedCredentials);
+            else
+                result = PromptForCredentialsCredUI(ownerHandle, storedCredentials);
+            return result ? DialogResult.OK : DialogResult.Cancel;
+        }
+
+        /// <summary>
+        /// Shows the credentials dialog as a modal dialog with the specified owner.
+        /// </summary>
         /// <param name="owner">The <see cref="IWin32Window"/> that owns the credentials dialog.</param>
         /// <returns><see cref="DialogResult.OK" /> if the user clicked OK; otherwise, <see cref="DialogResult.Cancel" />.</returns>
         /// <remarks>
@@ -436,40 +510,12 @@ namespace Ookii.Dialogs.WinForms
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         public DialogResult ShowDialog(IWin32Window owner)
         {
-            if( string.IsNullOrEmpty(_target) )
-                throw new InvalidOperationException(Properties.Resources.CredentialEmptyTargetError);
-
-            UserName = "";
-            Password = "";
-            IsStoredCredential = false;
-
-            if( RetrieveCredentialsFromApplicationInstanceCache() )
-            {
-                IsStoredCredential = true;
-                _confirmTarget = Target;
-                return DialogResult.OK;
-            }
-
-            bool storedCredentials = false;
-            if( ShowSaveCheckBox && RetrieveCredentials() )
-            {
-                IsSaveChecked = true;
-                if( !ShowUIForSavedCredentials )
-                {
-                    IsStoredCredential = true;
-                    _confirmTarget = Target;
-                    return DialogResult.OK;
-                }
-                storedCredentials = true;
-            }
-
-            IntPtr ownerHandle = owner == null ? NativeMethods.GetActiveWindow() : owner.Handle;
-            bool result;
-            if( NativeMethods.IsWindowsVistaOrLater )
-                result = PromptForCredentialsCredUIWin(ownerHandle, storedCredentials);
+            IntPtr ownerHandle;
+            if( owner == null )
+                ownerHandle = NativeMethods.GetActiveWindow();
             else
-                result = PromptForCredentialsCredUI(ownerHandle, storedCredentials);
-            return result ? DialogResult.OK : DialogResult.Cancel;
+                ownerHandle = owner.Handle;
+            return ShowDialog(ownerHandle);
         }
 
         /// <summary>

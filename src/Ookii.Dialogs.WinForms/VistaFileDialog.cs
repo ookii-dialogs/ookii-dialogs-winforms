@@ -576,6 +576,17 @@ namespace Ookii.Dialogs.WinForms
             }
         }
 
+        /// <summary>
+        /// Displays the file dialog.
+        /// </summary>
+        /// <param name="owner">The <see cref="IntPtr"/> Win32 handle that is the owner of this dialog.</param>
+        /// <returns>If the user clicks the OK button of the dialog that is displayed (e.g. <see cref="VistaOpenFileDialog" />, <see cref="VistaSaveFileDialog" />), <see langword="true" /> is returned; otherwise, <see langword="false" />.</returns>
+        public bool? ShowDialog(IntPtr owner)
+        {
+            IntPtr ownerHandle = owner == default(IntPtr) ? NativeMethods.GetActiveWindow() : owner;
+            return new bool?(RunFileDialog(ownerHandle));
+        }
+
         #endregion
 
         #region Protected Methods

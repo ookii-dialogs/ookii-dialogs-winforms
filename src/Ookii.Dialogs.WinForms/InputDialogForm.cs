@@ -97,6 +97,28 @@ namespace Ookii.Dialogs.WinForms
             }
         }
 
+        /// <summary>
+        /// Displays the folder browser dialog.
+        /// </summary>
+        /// <param name="owner">The <see cref="IntPtr"/> Win32 handle that is the owner of this dialog.</param>
+        /// <returns>If the user clicks the OK button, <see langword="true" /> is returned; otherwise, <see langword="false" />.</returns>
+        public DialogResult ShowDialog(IntPtr owner)
+        {
+            var ownerHandle = owner == default ? NativeMethods.GetActiveWindow() : owner;
+
+            var nativeWindow = new NativeWindow();
+            nativeWindow.AssignHandle(ownerHandle);
+
+            try
+            {
+                return ShowDialog(nativeWindow);
+            }
+            finally
+            {
+                nativeWindow.ReleaseHandle();
+            }
+        }
+
         protected virtual void OnOkButtonClicked(OkButtonClickedEventArgs e)
         {
             if( OkButtonClicked != null )
