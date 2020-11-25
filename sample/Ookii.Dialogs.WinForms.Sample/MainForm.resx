@@ -124,7 +124,7 @@
     <value>Task dialogs are a more flexible type of message box. Among other things, task dialogs support custom buttons, command links, scroll bars, expandable sections, radio buttons, a check box (useful for e.g. "don't show this again"), custom icons, and a footer. Some of those things are demonstrated here.</value>
   </data>
   <data name="_sampleTaskDialog.ExpandedInformation" xml:space="preserve">
-    <value>Ookii.org's Task Dialog doesn't just provide a wrapper for the native Task Dialog API; it is designed to provide a programming interface that is natural to .Net developers, and offers full Windows Forms designer support.</value>
+    <value>Ookii Task Dialog doesn't just provide a wrapper for the native Task Dialog API; it is designed to provide a programming interface that is natural to .Net developers, and offers full Windows Forms designer support.</value>
   </data>
   <metadata name="_sampleCommandLinkTaskDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>172, 17</value>

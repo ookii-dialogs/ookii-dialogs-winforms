@@ -13,9 +13,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("Release")]
 #endif
 
-[assembly: AssemblyCompany("Ookii.org")]
+[assembly: AssemblyCompany("augustoproiete.net")]
 [assembly: AssemblyProduct("Ookii.Dialogs.WinForms")]
-[assembly: AssemblyCopyright("Copyright (c) Sven Groot (Ookii.org) 2009")]
+[assembly: AssemblyCopyright("Copyright (c) 2009-2020 Ookii Dialogs Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

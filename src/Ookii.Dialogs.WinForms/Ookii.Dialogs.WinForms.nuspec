@@ -3,17 +3,20 @@
   <metadata minClientVersion="3.3">
     <id>Ookii.Dialogs.WinForms</id>
     <version>0.0.1-local</version>
-    <authors>Sven Groot,Caio Proiete</authors>
+    <authors>Ookii Dialogs Contributors</authors>
     <owners>augustoproiete</owners>
+    <license type="expression">BSD-3-Clause</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://github.com/augustoproiete/ookii-dialogs-winforms/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/augustoproiete/ookii-dialogs-winforms</projectUrl>
-    <repository type="git" url="https://github.com/augustoproiete/ookii-dialogs-winforms" />
+    <repository type="git" url="https://github.com/augustoproiete/ookii-dialogs-winforms.git" />
+    <icon>images\icon.png</icon>
     <iconUrl>https://raw.githubusercontent.com/augustoproiete/ookii-dialogs-winforms/master/assets/ookii-dialogs-winforms-nuget.png</iconUrl>
-    <summary>Common dialog classes for Windows Forms</summary>
-    <description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialogs, progress dialogs, input dialogs, and common file dialogs</description>
+    <description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</description>
     <tags>ookii dialogs winforms windowsforms windows-forms progress-dialog task-dialog credential-dialog input-dialog common-file-dialog</tags>
-    <copyright>Copyright (c) 2009 Sven Groot</copyright>
+    <copyright>Copyright (c) 2009-2020 Ookii Dialogs Contributors</copyright>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+    </dependencies>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Windows.Forms" targetFramework=".NETFramework4.5" />
       <frameworkAssembly assemblyName="System.Security" targetFramework=".NETFramework4.5" />
@@ -24,8 +27,10 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-    <file src="bin\$configuration$\Ookii.Dialogs.WinForms.dll" target="lib\net45\" />
-    <file src="bin\$configuration$\Ookii.Dialogs.WinForms.pdb" target="lib\net45\" />
-    <file src="bin\$configuration$\Ookii.Dialogs.WinForms.xml" target="lib\net45\" />
+    <file src="bin\Release\Ookii.Dialogs.WinForms.dll" target="lib\net45\" />
+    <file src="bin\Release\Ookii.Dialogs.WinForms.pdb" target="lib\net45\" />
+    <file src="bin\Release\Ookii.Dialogs.WinForms.xml" target="lib\net45\" />
+
+    <file src="..\..\assets\ookii-dialogs-winforms-nuget.png" target="images\icon.png" />
   </files>
 </package>
