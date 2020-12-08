@@ -12,7 +12,7 @@
 
 A class library for Windows Forms applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialogs, and common file dialogs.
 
-[![NuGet Version](http://img.shields.io/nuget/v/Ookii.Dialogs.WinForms.svg?style=flat)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms) [![NuGet Downloads](https://img.shields.io/nuget/dt/Ookii.Dialogs.WinForms.svg)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms) [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.5-informational)](https://dotnet.microsoft.com/download)
+[![NuGet Version](http://img.shields.io/nuget/v/Ookii.Dialogs.WinForms.svg?style=flat)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms) [![NuGet Downloads](https://img.shields.io/nuget/dt/Ookii.Dialogs.WinForms.svg)](https://www.nuget.org/packages/Ookii.Dialogs.WinForms) [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.5-512bd4)](https://dotnet.microsoft.com/download)
 </div>
 
 ## Give a Star! :star:
