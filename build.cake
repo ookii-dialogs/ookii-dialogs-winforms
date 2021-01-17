@@ -1,4 +1,4 @@
-#tool "nuget:?package=NuGet.CommandLine&version=5.8.0"
+#tool "nuget:?package=NuGet.CommandLine&version=5.8.1"
 #addin "nuget:?package=Cake.MinVer&version=0.2.0"
 
 var target       = Argument<string>("target", "pack");
