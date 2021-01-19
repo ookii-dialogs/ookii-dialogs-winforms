@@ -1,4 +1,4 @@
-namespace Ookii.Dialogs.WinForms
+﻿namespace Ookii.Dialogs.WinForms
 {
     partial class TaskDialogItem
     {

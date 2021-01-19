@@ -13,7 +13,7 @@
     <iconUrl>https://raw.githubusercontent.com/augustoproiete/ookii-dialogs-winforms/master/assets/ookii-dialogs-winforms-nuget.png</iconUrl>
     <description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</description>
     <tags>ookii dialogs winforms windowsforms windows-forms progress-dialog task-dialog credential-dialog input-dialog common-file-dialog</tags>
-    <copyright>Copyright (c) 2009-2020 Ookii Dialogs Contributors</copyright>
+    <copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</copyright>
     <dependencies>
       <group targetFramework=".NETFramework4.5" />
     </dependencies>

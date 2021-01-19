@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("augustoproiete.net")]
 [assembly: AssemblyProduct("Ookii.Dialogs.WinForms")]
-[assembly: AssemblyCopyright("Copyright (c) 2009-2020 Ookii Dialogs Contributors")]
+[assembly: AssemblyCopyright("Copyright (c) 2009-2021 Ookii Dialogs Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
