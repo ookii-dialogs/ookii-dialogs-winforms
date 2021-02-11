@@ -8,11 +8,11 @@
     <Description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</Description>
     <Copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</Copyright>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <Version>0.0.1-local</Version>
+    <Version>1.0.0</Version>
     <DocumentationFile>bin\$(Configuration)\Ookii.Dialogs.WinForms.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>Ookii Dialogs Contributors</Authors>
-    <PackageIconUrl>https://raw.githubusercontent.com/augustoproiete/ookii-dialogs-winforms/master/assets/ookii-dialogs-winforms-nuget.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageId>Ookii.Dialogs.WinForms</PackageId>
     <PackageProjectUrl>https://github.com/augustoproiete/ookii-dialogs-winforms</PackageProjectUrl>
     <PackageTags>ookii dialogs winforms windowsforms windows-forms progress-dialog task-dialog credential-dialog input-dialog common-file-dialog</PackageTags>
@@ -34,8 +34,11 @@
     <AssemblyOriginatorKeyFile>..\..\assets\ookii-dialogs.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageIcon>ookii-dialogs-winforms-nuget.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.Design" />
@@ -143,7 +146,7 @@
     <Content Include="VistaSaveFileDialog.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\LICENSE">
+    <None Include="..\..\assets\ookii-dialogs-winforms-nuget.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

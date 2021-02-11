@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{B82D79EE-58EA-44D5-9913-650BD9EFA8E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ookii.Dialogs.WinForms.Sample", "sample\Ookii.Dialogs.WinForms.Sample\Ookii.Dialogs.WinForms.Sample.csproj", "{D52F3B1C-03B3-41B1-A15E-E23FF6877939}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{68ED7CF2-8E33-460B-AF18-15143BF954F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ookii.Dialogs.WinForms", "src\Ookii.Dialogs.WinForms\Ookii.Dialogs.WinForms.csproj", "{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms", "src\Ookii.Dialogs.WinForms\Ookii.Dialogs.WinForms.csproj", "{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{22DAE784-2CFA-4C9C-99FE-3E9EF5760F2B}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,27 +19,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{22DAE7
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet50", "sample\net5.0\Ookii.Dialogs.WinForms.SampleNet50.csproj", "{0E90268B-720E-40C0-8A2F-6EA409451CCB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNetNet45", "sample\net45\Ookii.Dialogs.WinForms.SampleNetNet45.csproj", "{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNetCoreApp31", "sample\netcoreapp3.1\Ookii.Dialogs.WinForms.SampleNetCoreApp31.csproj", "{01648956-1C06-4B52-914E-C370DA4EE881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D52F3B1C-03B3-41B1-A15E-E23FF6877939}.Release|Any CPU.Build.0 = Release|Any CPU
 		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E90268B-720E-40C0-8A2F-6EA409451CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E90268B-720E-40C0-8A2F-6EA409451CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E90268B-720E-40C0-8A2F-6EA409451CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E90268B-720E-40C0-8A2F-6EA409451CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01648956-1C06-4B52-914E-C370DA4EE881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01648956-1C06-4B52-914E-C370DA4EE881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01648956-1C06-4B52-914E-C370DA4EE881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01648956-1C06-4B52-914E-C370DA4EE881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D52F3B1C-03B3-41B1-A15E-E23FF6877939} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
 		{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0} = {68ED7CF2-8E33-460B-AF18-15143BF954F6}
+		{0E90268B-720E-40C0-8A2F-6EA409451CCB} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
+		{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
+		{01648956-1C06-4B52-914E-C370DA4EE881} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {223C1782-9064-416B-B539-EEBCABF427F5}
