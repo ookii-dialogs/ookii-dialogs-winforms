@@ -1,39 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{779E62B3-C5A6-494D-9D87-96C0DEC7FFB0}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ookii.Dialogs.WinForms</RootNamespace>
-    <AssemblyName>Ookii.Dialogs.WinForms</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>net45;netcoreapp3.1;net5.0-windows</TargetFrameworks>
+    <AssemblyTitle>Ookii.Dialogs.WinForms</AssemblyTitle>
+    <Company>augustoproiete.net</Company>
+    <Product>Ookii.Dialogs.WinForms</Product>
+    <Description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</Description>
+    <Copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</Copyright>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <Version>1.0.0</Version>
+    <DocumentationFile>bin\$(Configuration)\Ookii.Dialogs.WinForms.xml</DocumentationFile>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Authors>Ookii Dialogs Contributors</Authors>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageId>Ookii.Dialogs.WinForms</PackageId>
+    <PackageProjectUrl>https://github.com/augustoproiete/ookii-dialogs-winforms</PackageProjectUrl>
+    <PackageTags>ookii dialogs winforms windowsforms windows-forms progress-dialog task-dialog credential-dialog input-dialog common-file-dialog</PackageTags>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Ookii.Dialogs.WinForms.xml</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Ookii.Dialogs.WinForms.xml</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,110 +32,80 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\..\assets\ookii-dialogs.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageIcon>ookii-dialogs-winforms-nuget.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditionalVisualStyleElements.cs" />
-    <Compile Include="AnimationResource.cs" />
-    <Compile Include="ButtonType.cs" />
-    <Compile Include="ComCtlv6ActivationContext.cs" />
-    <Compile Include="CredentialDialog.cs">
+    <Compile Update="CredentialDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CredentialDialog.designer.cs">
+    <Compile Update="CredentialDialog.designer.cs">
       <DependentUpon>CredentialDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="CredentialException.cs" />
-    <Compile Include="DialogHelper.cs" />
-    <Compile Include="DownlevelTextMode.cs" />
-    <Compile Include="ExpandButtonClickedEventArgs.cs" />
-    <Compile Include="ExtendedForm.cs">
+    <Compile Update="ExtendedForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Glass.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="HyperlinkClickedEventArgs.cs" />
-    <Compile Include="InputDialog.cs">
+    <Compile Update="InputDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="InputDialog.designer.cs">
+    <Compile Update="InputDialog.designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputDialogForm.cs">
+    <Compile Update="InputDialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputDialogForm.designer.cs">
+    <Compile Update="InputDialogForm.designer.cs">
       <DependentUpon>InputDialogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interop\ComDlgResources.cs" />
-    <Compile Include="Interop\COMGuids.cs" />
-    <Compile Include="Interop\ErrorHelper.cs" />
-    <Compile Include="Interop\IProgressDialog.cs" />
-    <Compile Include="Interop\ShellComInterfaces.cs" />
-    <Compile Include="Interop\ShellWrapperDefinitions.cs" />
-    <Compile Include="Interop\Win32Resources.cs" />
-    <Compile Include="Interop\WindowHandleWrapper.cs" />
-    <Compile Include="NativeMethods.cs" />
-    <Compile Include="OkButtonClickedEventArgs.cs" />
-    <Compile Include="ProgressBarState.cs" />
-    <Compile Include="ProgressBarStyle.cs" />
-    <Compile Include="ProgressDialog.cs">
+    <Compile Update="ProgressDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProgressDialog.designer.cs">
+    <Compile Update="ProgressDialog.designer.cs">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\AssemblyVersionInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SafeHandles.cs" />
-    <Compile Include="ShellAnimation.cs" />
-    <Compile Include="TaskDialog.cs">
+    <Compile Update="TaskDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TaskDialog.designer.cs">
+    <Compile Update="TaskDialog.designer.cs">
       <DependentUpon>TaskDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="TaskDialogButton.cs">
+    <Compile Update="TaskDialogButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TaskDialogButtonStyle.cs" />
-    <Compile Include="TaskDialogDesigner.cs" />
-    <Compile Include="TaskDialogIcon.cs" />
-    <Compile Include="TaskDialogItem.cs">
+    <Compile Update="TaskDialogItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TaskDialogItem.designer.cs">
+    <Compile Update="TaskDialogItem.designer.cs">
       <DependentUpon>TaskDialogItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="TaskDialogItemClickedEventArgs.cs" />
-    <Compile Include="TaskDialogItemCollection.cs" />
-    <Compile Include="TaskDialogRadioButton.cs">
+    <Compile Update="TaskDialogRadioButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TimerEventArgs.cs" />
-    <Compile Include="VistaFileDialog.cs">
+    <Compile Update="VistaFileDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VistaFileDialogEvents.cs" />
-    <Compile Include="VistaFolderBrowserDialog.cs">
+    <Compile Update="VistaFolderBrowserDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VistaOpenFileDialog.cs">
+    <Compile Update="VistaOpenFileDialog.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VistaSaveFileDialog.cs">
+    <Compile Update="VistaSaveFileDialog.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -154,25 +113,21 @@
     <EmbeddedResource Include="ProgressDialog.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProgressDialog.resx">
+    <EmbeddedResource Update="ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TaskDialog.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExtendedForm.resx">
+    <EmbeddedResource Update="ExtendedForm.resx">
       <DependentUpon>ExtendedForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputDialogForm.nl.resx">
+    <EmbeddedResource Update="InputDialogForm.nl.resx">
       <DependentUpon>InputDialogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputDialogForm.resx">
+    <EmbeddedResource Update="InputDialogForm.resx">
       <DependentUpon>InputDialogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFolderBrowserDialog.bmp" />
@@ -191,16 +146,9 @@
     <Content Include="VistaSaveFileDialog.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ookii.Dialogs.WinForms.nuspec">
-      <SubType>Designer</SubType>
+    <None Include="..\..\assets\ookii-dialogs-winforms-nuget.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

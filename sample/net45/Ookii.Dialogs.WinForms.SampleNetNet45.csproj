@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <ProjectGuid>{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Ookii.Dialogs.WinForms.Sample</RootNamespace>
+    <AssemblyName>Ookii.Dialogs.WinForms.Sample</AssemblyName>
+    <TargetFramework>net45</TargetFramework>
+    <ApplicationManifest>..\shared\app.manifest</ApplicationManifest>
+    <ApplicationIcon>..\shared\ookii.ico</ApplicationIcon>
+    <AssemblyTitle>Ookii.Dialogs.WinForms.Sample</AssemblyTitle>
+    <Company>Ookii Dialogs Contributors</Company>
+    <Product>Ookii.Dialogs.WinForms.SampleNet45</Product>
+    <Copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</Copyright>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <Version>1.0.0</Version>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\assets\ookii-dialogs.snk</AssemblyOriginatorKeyFile>
+    <PackageId>Ookii.Dialogs.WinForms.SampleNet45</PackageId>
+    <Authors>Ookii Dialogs Contributors</Authors>
+    <Description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</Description>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</PackageProjectUrl>
+    <PackageIcon>ookii-dialogs-winforms-nuget.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ookii dialogs winforms windowsforms windows-forms progress-dialog task-dialog credential-dialog input-dialog common-file-dialog</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\shared\MainForm.cs" Link="MainForm.cs" />
+    <Compile Include="..\shared\MainForm.Designer.cs" Link="MainForm.Designer.cs" />
+    <Compile Include="..\shared\Program.cs" Link="Program.cs" />
+    <EmbeddedResource Include="..\shared\MainForm.resx" Link="MainForm.resx" />
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="..\..\assets\ookii-dialogs-winforms-nuget.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ookii.Dialogs.WinForms\Ookii.Dialogs.WinForms.csproj" />
+  </ItemGroup>
+</Project>
