@@ -465,7 +465,7 @@ namespace Ookii.Dialogs.WinForms
                 storedCredentials = true;
             }
 
-            IntPtr ownerHandle = owner == null ? NativeMethods.GetActiveWindow() : owner;
+            IntPtr ownerHandle = owner == IntPtr.Zero ? NativeMethods.GetActiveWindow() : owner;
             bool result;
             if( NativeMethods.IsWindowsVistaOrLater )
                 result = PromptForCredentialsCredUIWin(ownerHandle, storedCredentials);

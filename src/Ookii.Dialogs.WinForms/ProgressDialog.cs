@@ -561,7 +561,7 @@ namespace Ookii.Dialogs.WinForms
         /// could not be loaded, or the operation is already running.</exception>
         public void ShowDialog(IntPtr owner, object argument)
         {
-            RunProgressDialog(owner == null ? NativeMethods.GetActiveWindow() : owner, argument);
+            RunProgressDialog(owner == IntPtr.Zero ? NativeMethods.GetActiveWindow() : owner, argument);
         }
 
         /// <summary>
