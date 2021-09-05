@@ -1,5 +1,3 @@
-#tool "nuget:?package=NuGet.CommandLine&version=5.10.0"
-
 #addin "nuget:?package=Cake.MinVer&version=1.0.1"
 #addin "nuget:?package=Cake.Args&version=1.0.1"
 
@@ -9,72 +7,76 @@ var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("
 Task("clean")
     .Does(() =>
 {
-    CleanDirectory("./build/artifacts");
-    CleanDirectories("./src/**/bin");
-    CleanDirectories("./src/**/obj");
-    CleanDirectories("./test/**/bin");
-    CleanDirectories("./test/**/obj");
+    CleanDirectories("./artifact/**");
+    CleanDirectories("./**/^{bin,obj}");
 });
 
 Task("restore")
     .IsDependentOn("clean")
     .Does(() =>
 {
-    NuGetRestore("./Ookii.Dialogs.WinForms.sln", new NuGetRestoreSettings
+    DotNetCoreRestore("./Ookii.Dialogs.WinForms.sln", new DotNetCoreRestoreSettings
     {
-        NoCache = true,
+        LockedMode = true,
     });
 });
 
 Task("build")
     .IsDependentOn("restore")
+    .DoesForEach(new[] { "Debug", "Release" }, (configuration) =>
+{
+    DotNetCoreBuild("./Ookii.Dialogs.WinForms.sln", new DotNetCoreBuildSettings
+    {
+        Configuration = configuration,
+        NoRestore = true,
+        NoIncremental = false,
+        MSBuildSettings = new DotNetCoreMSBuildSettings()
+            .WithProperty("Version", buildVersion.Version)
+            .WithProperty("AssemblyVersion", buildVersion.AssemblyVersion)
+            .WithProperty("FileVersion", buildVersion.FileVersion)
+            .WithProperty("ContinuousIntegrationBuild", BuildSystem.IsLocalBuild ? "false" : "true")
+    });
+});
+
+Task("test")
+    .IsDependentOn("build")
     .Does(() =>
 {
-    var assemblyVersionInfoFile = FilePath.FromString("./src/Ookii.Dialogs.WinForms/Properties/AssemblyVersionInfo.cs");
-    var assemblyVersionInfoBytes = System.IO.File.ReadAllBytes(assemblyVersionInfoFile.FullPath);
-
-    try
+    var settings = new DotNetCoreTestSettings
     {
-        CreateAssemblyInfo(assemblyVersionInfoFile, new AssemblyInfoSettings
-        {
-            Version = buildVersion.AssemblyVersion,
-            FileVersion = buildVersion.FileVersion,
-            InformationalVersion = buildVersion.PackageVersion,
-        });
+        Configuration = "Release",
+        NoRestore = true,
+        NoBuild = true,
+    };
 
-        MSBuild("./Ookii.Dialogs.WinForms.sln", new MSBuildSettings
-        {
-            Configuration = "Debug",
-            ToolVersion = MSBuildToolVersion.VS2019,
-        }.WithTarget("Rebuild"));
-
-        MSBuild("./Ookii.Dialogs.WinForms.sln", new MSBuildSettings
-        {
-            Configuration = "Release",
-            ToolVersion = MSBuildToolVersion.VS2019,
-        }.WithTarget("Rebuild"));
-    }
-    finally
+    var projectFiles = GetFiles("./test/**/*.csproj");
+    foreach (var file in projectFiles)
     {
-        System.IO.File.WriteAllBytes(assemblyVersionInfoFile.FullPath, assemblyVersionInfoBytes);
+        DotNetCoreTest(file.FullPath, settings);
     }
 });
 
 Task("pack")
-    .IsDependentOn("build")
+    .IsDependentOn("test")
     .Does(() =>
 {
-    var releaseNotes = $"https://github.com/augustoproiete/ookii-dialogs-winforms/releases/tag/v{buildVersion.PackageVersion}";
+    var releaseNotes = $"https://github.com/ookii-dialogs/ookii-dialogs-winforms/releases/tag/v{buildVersion.Version}";
 
-    NuGetPack("./src/Ookii.Dialogs.WinForms/Ookii.Dialogs.WinForms.nuspec", new NuGetPackSettings
+    DotNetCorePack("./src/Ookii.Dialogs.WinForms/Ookii.Dialogs.WinForms.csproj", new DotNetCorePackSettings
     {
-        Version = buildVersion.PackageVersion,
-        OutputDirectory = "./build/artifacts",
-        ReleaseNotes = new[] { releaseNotes },
+        Configuration = "Release",
+        NoRestore = true,
+        NoBuild = true,
+        IncludeSymbols = true,
+        IncludeSource = true,
+        OutputDirectory = "./artifact/nuget",
+        MSBuildSettings = new DotNetCoreMSBuildSettings()
+            .WithProperty("Version", buildVersion.Version)
+            .WithProperty("PackageReleaseNotes", releaseNotes)
     });
 });
 
-Task("publish")
+Task("push")
     .IsDependentOn("pack")
     .Does(context =>
 {
@@ -98,7 +100,7 @@ Task("publish")
         ApiKey = apiKey,
     };
 
-    foreach (var nugetPackageFile in GetFiles("./build/artifacts/*.nupkg"))
+    foreach (var nugetPackageFile in GetFiles("./artifact/nuget/*.nupkg"))
     {
         DotNetCoreNuGetPush(nugetPackageFile.FullPath, nugetPushSettings);
     }
