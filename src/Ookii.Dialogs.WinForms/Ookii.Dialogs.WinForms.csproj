@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net5.0-windows;netcoreapp3.1;net45</TargetFrameworks>
+    <TargetFrameworks>net5.0-windows;netcoreapp3.1;net461</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>Ookii.Dialogs.WinForms</RootNamespace>
 
@@ -46,7 +46,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DisableImplicitFrameworkReferences Condition=" '$(TargetFramework)' == 'net45' ">true</DisableImplicitFrameworkReferences>
+    <DisableImplicitFrameworkReferences Condition=" '$(TargetFramework)' == 'net461' ">true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
   <ItemGroup>
@@ -54,7 +54,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>  
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
 
     <Reference Include="System" />

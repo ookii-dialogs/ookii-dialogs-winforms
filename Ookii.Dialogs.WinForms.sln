@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{22DAE7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet50", "sample\net5.0\Ookii.Dialogs.WinForms.SampleNet50.csproj", "{0E90268B-720E-40C0-8A2F-6EA409451CCB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNetNet45", "sample\net45\Ookii.Dialogs.WinForms.SampleNetNet45.csproj", "{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet461", "sample\net461\Ookii.Dialogs.WinForms.SampleNet461.csproj", "{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNetCoreApp31", "sample\netcoreapp3.1\Ookii.Dialogs.WinForms.SampleNetCoreApp31.csproj", "{01648956-1C06-4B52-914E-C370DA4EE881}"
 EndProject
