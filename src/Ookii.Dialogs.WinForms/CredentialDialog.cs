@@ -53,6 +53,7 @@ namespace Ookii.Dialogs.WinForms
         private string _confirmTarget;
         private NetworkCredential _credentials = new NetworkCredential();
         private bool _isSaveChecked;
+        private byte[] _additionalEntropy;
         private string _target;
 
         private static readonly Dictionary<string, System.Net.NetworkCredential> _applicationInstanceCredentialCache = new Dictionary<string, NetworkCredential>();
@@ -160,6 +161,27 @@ namespace Ookii.Dialogs.WinForms
                 _confirmTarget = null;
                 _credentials.Password = value;
                 OnPasswordChanged(EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the optional entropy to increase the complexity of the password encryption.
+        /// This property is only used if the user chose to save the credentials.
+        /// </summary>
+        /// <value>
+        /// A byte array with values of your choosing.
+        /// The default value is <see langword="null" /> for no added complexity.
+        /// </value>
+        [Browsable(false)]
+        public byte[] AdditionalEntropy
+        {
+            get
+            {
+                return _additionalEntropy;
+            }
+            set
+            {
+                _additionalEntropy = value;
             }
         }
 
@@ -550,7 +572,7 @@ namespace Ookii.Dialogs.WinForms
                     }
                 }
 
-                StoreCredential(Target, Credentials);
+                StoreCredential(Target, Credentials, AdditionalEntropy);
             }
         }
 
@@ -559,6 +581,7 @@ namespace Ookii.Dialogs.WinForms
         /// </summary>
         /// <param name="target">The target name for the credentials.</param>
         /// <param name="credential">The credentials to store.</param>
+        /// <param name="additionalEntropy">Additional entropy for encrypting the password.</param>
         /// <exception cref="ArgumentNullException">
         /// <para>
         ///   <paramref name="target"/> is <see langword="null" />.
@@ -584,7 +607,7 @@ namespace Ookii.Dialogs.WinForms
         ///   form "Company_ApplicationName_www.example.com".
         /// </para>
         /// </remarks>
-        public static void StoreCredential(string target, NetworkCredential credential)
+        public static void StoreCredential(string target, NetworkCredential credential, byte[] additionalEntropy = null)
         {
             if( target == null )
                 throw new ArgumentNullException("target");
@@ -597,7 +620,7 @@ namespace Ookii.Dialogs.WinForms
             c.UserName = credential.UserName;
             c.TargetName = target;
             c.Persist = NativeMethods.CredPersist.Enterprise;
-            byte[] encryptedPassword = EncryptPassword(credential.Password);
+            byte[] encryptedPassword = EncryptPassword(credential.Password, additionalEntropy);
             c.CredentialBlob = System.Runtime.InteropServices.Marshal.AllocHGlobal(encryptedPassword.Length);
             try
             {
@@ -617,6 +640,7 @@ namespace Ookii.Dialogs.WinForms
         /// Retrieves credentials for the specified target from the operating system's credential store for the current user.
         /// </summary>
         /// <param name="target">The target name for the credentials.</param>
+        /// <param name="additionalEntropy">The same entropy value that was used when storing the credentials.</param>
         /// <returns>The credentials if they were found; otherwise, <see langword="null" />.</returns>
         /// <remarks>
         /// <para>
@@ -631,7 +655,7 @@ namespace Ookii.Dialogs.WinForms
         /// <exception cref="ArgumentNullException"><paramref name="target"/> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException"><paramref name="target"/> is an empty string ("").</exception>
         /// <exception cref="CredentialException">An error occurred retrieving the credentials.</exception>
-        public static NetworkCredential RetrieveCredential(string target)
+        public static NetworkCredential RetrieveCredential(string target, byte[] additionalEntropy = null)
         {
             if( target == null )
                 throw new ArgumentNullException("target");
@@ -652,7 +676,7 @@ namespace Ookii.Dialogs.WinForms
                     NativeMethods.CREDENTIAL c = (NativeMethods.CREDENTIAL)System.Runtime.InteropServices.Marshal.PtrToStructure(credential, typeof(NativeMethods.CREDENTIAL));
                     byte[] encryptedPassword = new byte[c.CredentialBlobSize];
                     System.Runtime.InteropServices.Marshal.Copy(c.CredentialBlob, encryptedPassword, 0, encryptedPassword.Length);
-                    cred = new NetworkCredential(c.UserName, DecryptPassword(encryptedPassword));
+                    cred = new NetworkCredential(c.UserName, DecryptPassword(encryptedPassword, additionalEntropy));
                 }
                 finally
                 {
@@ -895,7 +919,7 @@ namespace Ookii.Dialogs.WinForms
 
         private bool RetrieveCredentials()
         {
-            NetworkCredential credential = RetrieveCredential(Target);
+            NetworkCredential credential = RetrieveCredential(Target, AdditionalEntropy);
             if( credential != null )
             {
                 UserName = credential.UserName;
@@ -905,17 +929,17 @@ namespace Ookii.Dialogs.WinForms
             return false;
         }
 
-        private static byte[] EncryptPassword(string password)
+        private static byte[] EncryptPassword(string password, byte[] additionalEntropy)
         {
-            byte[] protectedData = System.Security.Cryptography.ProtectedData.Protect(System.Text.Encoding.UTF8.GetBytes(password), null, System.Security.Cryptography.DataProtectionScope.CurrentUser);
+            byte[] protectedData = System.Security.Cryptography.ProtectedData.Protect(System.Text.Encoding.UTF8.GetBytes(password), additionalEntropy, System.Security.Cryptography.DataProtectionScope.CurrentUser);
             return protectedData;
         }
 
-        private static string DecryptPassword(byte[] encrypted)
+        private static string DecryptPassword(byte[] encrypted, byte[] additionalEntropy)
         {
             try
             {
-                return System.Text.Encoding.UTF8.GetString(System.Security.Cryptography.ProtectedData.Unprotect(encrypted, null, System.Security.Cryptography.DataProtectionScope.CurrentUser));
+                return System.Text.Encoding.UTF8.GetString(System.Security.Cryptography.ProtectedData.Unprotect(encrypted, additionalEntropy, System.Security.Cryptography.DataProtectionScope.CurrentUser));
             }
             catch( System.Security.Cryptography.CryptographicException )
             {
