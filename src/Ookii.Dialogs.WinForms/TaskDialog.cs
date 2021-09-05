@@ -1108,7 +1108,7 @@ namespace Ookii.Dialogs.WinForms
             if( IsDialogRunning )
                 throw new InvalidOperationException(Properties.Resources.TaskDialogRunningError);
 
-            if( _buttons.Count == 0 )
+            if (_buttons is null || _buttons.Count == 0)
                 throw new InvalidOperationException(Properties.Resources.TaskDialogNoButtonsError);
 
             _config.hwndParent = owner;
