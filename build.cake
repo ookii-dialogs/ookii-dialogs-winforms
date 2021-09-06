@@ -74,6 +74,19 @@ Task("pack")
             .WithProperty("Version", buildVersion.Version)
             .WithProperty("PackageReleaseNotes", releaseNotes)
     });
+
+    DotNetCorePack("./src/Ookii.Dialogs.WindowsForms/Ookii.Dialogs.WindowsForms.csproj", new DotNetCorePackSettings
+    {
+        Configuration = "Release",
+        NoRestore = true,
+        NoBuild = true,
+        IncludeSymbols = false,
+        IncludeSource = false,
+        OutputDirectory = "./artifact/nuget",
+        MSBuildSettings = new DotNetCoreMSBuildSettings()
+            .WithProperty("Version", buildVersion.Version)
+            .WithProperty("PackageReleaseNotes", releaseNotes)
+    });
 });
 
 Task("push")

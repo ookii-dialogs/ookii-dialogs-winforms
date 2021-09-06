@@ -38,7 +38,7 @@
     <PackageTags>ookii;dialogs;winforms;windowsforms;windows-forms;progress-dialog;task-dialog;credential-dialog;input-dialog;common-file-dialog</PackageTags>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <PackageIcon>images\icon.png</PackageIcon>
-    <PackageIconUrl>https://cdn.jsdelivr.net/gh/ookii-dialogs/ookii-dialogs-winforms/assets/ookii-dialogs-winforms-nuget.png</PackageIconUrl>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/ookii-dialogs/ookii-dialogs-winforms/assets/ookii-dialogs-deprecated-nuget.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/ookii-dialogs/ookii-dialogs-winforms/releases</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
