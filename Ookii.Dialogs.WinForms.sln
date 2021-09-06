@@ -14,9 +14,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{22DAE7
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		build.cake = build.cake
+		build.cmd = build.cmd
+		build.ps1 = build.ps1
+		build.sh = build.sh
+		cake.config = cake.config
+		CODEOWNERS = CODEOWNERS
+		global.json = global.json
 		LICENSE = LICENSE
+		nuget.config = nuget.config
 		assets\ookii-dialogs.snk = assets\ookii-dialogs.snk
 		README.md = README.md
+		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet50", "sample\net5.0\Ookii.Dialogs.WinForms.SampleNet50.csproj", "{0E90268B-720E-40C0-8A2F-6EA409451CCB}"

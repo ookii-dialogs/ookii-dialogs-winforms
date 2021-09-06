@@ -31,7 +31,7 @@ The included sample application [`Ookii.Dialogs.WinForms.Sample`](sample/Ookii.D
 
 ### Windows Presentation Foundation (WPF) compatibility
 
-If you're looking to use these common dialogs on a WPF application, check out [Ookii.Dialogs.Wpf](https://github.com/augustoproiete/ookii-dialogs-wpf).
+If you're looking to use these common dialogs on a WPF application, check out [Ookii.Dialogs.Wpf](https://github.com/ookii-dialogs/ookii-dialogs-wpf).
 
 ## Included dialogs
 
@@ -107,7 +107,7 @@ The `ExtendedForm` class serves as an alternative base class for forms, and prov
 
 ## Release History
 
-Click on the [Releases](https://github.com/augustoproiete/ookii-dialogs-winforms/releases) tab on GitHub.
+Click on the [Releases](https://github.com/ookii-dialogs/ookii-dialogs-winforms/releases) tab on GitHub.
 
 ---
 

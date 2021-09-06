@@ -57,7 +57,7 @@
             this._sampleTaskDialog.Content = resources.GetString("_sampleTaskDialog.Content");
             this._sampleTaskDialog.EnableHyperlinks = true;
             this._sampleTaskDialog.ExpandedInformation = resources.GetString("_sampleTaskDialog.ExpandedInformation");
-            this._sampleTaskDialog.Footer = "Task Dialogs support footers and can even include <a href=\"https://github.com/augustoproiete/ookii-dialogs-winforms\">" +
+            this._sampleTaskDialog.Footer = "Task Dialogs support footers and can even include <a href=\"https://github.com/ookii-dialogs/ookii-dialogs-winforms\">" +
                 "hyperlinks</a>.";
             this._sampleTaskDialog.FooterIcon = Ookii.Dialogs.WinForms.TaskDialogIcon.Information;
             this._sampleTaskDialog.MainInstruction = "This is an example task dialog.";
