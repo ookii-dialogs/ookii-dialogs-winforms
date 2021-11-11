@@ -28,13 +28,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{22DAE7
 		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet50", "sample\net5.0\Ookii.Dialogs.WinForms.SampleNet50.csproj", "{0E90268B-720E-40C0-8A2F-6EA409451CCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet50", "sample\net50\Ookii.Dialogs.WinForms.SampleNet50.csproj", "{0E90268B-720E-40C0-8A2F-6EA409451CCB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet462", "sample\net462\Ookii.Dialogs.WinForms.SampleNet462.csproj", "{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNetCoreApp31", "sample\netcoreapp3.1\Ookii.Dialogs.WinForms.SampleNetCoreApp31.csproj", "{01648956-1C06-4B52-914E-C370DA4EE881}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WindowsForms", "src\Ookii.Dialogs.WindowsForms\Ookii.Dialogs.WindowsForms.csproj", "{732A304D-AA7E-4768-AAE3-5021EF3BFD3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ookii.Dialogs.WinForms.SampleNet60", "sample\net60\Ookii.Dialogs.WinForms.SampleNet60.csproj", "{045DEB04-262C-41E6-BCAA-8DD0EFCD7F98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{732A304D-AA7E-4768-AAE3-5021EF3BFD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{732A304D-AA7E-4768-AAE3-5021EF3BFD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{732A304D-AA7E-4768-AAE3-5021EF3BFD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{045DEB04-262C-41E6-BCAA-8DD0EFCD7F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045DEB04-262C-41E6-BCAA-8DD0EFCD7F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045DEB04-262C-41E6-BCAA-8DD0EFCD7F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045DEB04-262C-41E6-BCAA-8DD0EFCD7F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{AE0A9FDB-2BFF-4647-A1DB-4B6D17AC443D} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
 		{01648956-1C06-4B52-914E-C370DA4EE881} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
 		{732A304D-AA7E-4768-AAE3-5021EF3BFD3F} = {68ED7CF2-8E33-460B-AF18-15143BF954F6}
+		{045DEB04-262C-41E6-BCAA-8DD0EFCD7F98} = {B82D79EE-58EA-44D5-9913-650BD9EFA8E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {223C1782-9064-416B-B539-EEBCABF427F5}

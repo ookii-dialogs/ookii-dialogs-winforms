@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</Copyright>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <Authors>Ookii Dialogs Contributors</Authors>
+    <Description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</Description>
+    <PackageProjectUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</PackageProjectUrl>
+    <PackageIcon>ookii-dialogs-winforms-nuget.png</PackageIcon>
+    <RepositoryUrl>https://github.com/ookii-dialogs/ookii-dialogs-winforms</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ookii dialogs winforms windowsforms windows-forms progress-dialog task-dialog credential-dialog input-dialog common-file-dialog</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\shared\MainForm.cs" Link="MainForm.cs" />
+    <Compile Include="..\shared\MainForm.Designer.cs" Link="MainForm.Designer.cs" />
+    <Compile Include="..\shared\Program.cs" Link="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\shared\ookii.ico" Link="ookii.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\shared\MainForm.resx" Link="MainForm.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\assets\ookii-dialogs-winforms-nuget.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\shared\App.config" Link="App.config" />
+    <None Include="..\shared\app.manifest" Link="app.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Ookii.Dialogs.WinForms\Ookii.Dialogs.WinForms.csproj" />
+  </ItemGroup>
+
+</Project>

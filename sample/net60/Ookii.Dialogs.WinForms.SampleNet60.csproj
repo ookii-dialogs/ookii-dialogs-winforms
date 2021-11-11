@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net50-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <Copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</Copyright>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
@@ -30,10 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\assets\ookii-dialogs-winforms-nuget.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <None Include="..\..\assets\ookii-dialogs-winforms-nuget.png" Pack="True" PackagePath="/" />
     <None Include="..\shared\App.config" Link="App.config" />
     <None Include="..\shared\app.manifest" Link="app.manifest" />
   </ItemGroup>

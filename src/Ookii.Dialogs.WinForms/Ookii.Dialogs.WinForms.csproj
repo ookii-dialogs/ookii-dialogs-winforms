@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net5.0-windows;netcoreapp3.1;net462</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net462</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>Ookii.Dialogs.WinForms</RootNamespace>
 
