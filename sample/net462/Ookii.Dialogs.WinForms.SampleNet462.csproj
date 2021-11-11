@@ -5,12 +5,12 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Ookii.Dialogs.WinForms.Sample</RootNamespace>
     <AssemblyName>Ookii.Dialogs.WinForms.Sample</AssemblyName>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <ApplicationManifest>..\shared\app.manifest</ApplicationManifest>
     <ApplicationIcon>..\shared\ookii.ico</ApplicationIcon>
     <AssemblyTitle>Ookii.Dialogs.WinForms.Sample</AssemblyTitle>
     <Company>Ookii Dialogs Contributors</Company>
-    <Product>Ookii.Dialogs.WinForms.SampleNet461</Product>
+    <Product>Ookii.Dialogs.WinForms.SampleNet462</Product>
     <Copyright>Copyright (c) 2009-2021 Ookii Dialogs Contributors</Copyright>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
@@ -32,7 +32,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\..\assets\ookii-dialogs.snk</AssemblyOriginatorKeyFile>
-    <PackageId>Ookii.Dialogs.WinForms.SampleNet461</PackageId>
+    <PackageId>Ookii.Dialogs.WinForms.SampleNet462</PackageId>
     <Authors>Ookii Dialogs Contributors</Authors>
     <Description>Ookii.Dialogs.WinForms is a class library for .NET applications providing several common dialogs. Included are classes for task dialogs, credential dialog, progress dialog, input dialog, folder browser dialog, and more.</Description>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
