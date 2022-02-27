@@ -50,6 +50,12 @@ namespace Ookii.Dialogs.WinForms
     [DefaultProperty("MainInstruction"), DefaultEvent("UserNameChanged"), Description("Allows access to credential UI for generic credentials.")]
     public partial class CredentialDialog : Component
     {
+        /// <summary>
+        /// The logon attempt failed
+        /// </summary>
+        /// <remarks>A possible value for the authError parameter. Imported from WinError.h.</remarks>
+        public const int SEC_E_LOGON_DENIED = unchecked((int)0x8009030C);
+
         private string _confirmTarget;
         private NetworkCredential _credentials = new NetworkCredential();
         private bool _isSaveChecked;
@@ -381,7 +387,6 @@ namespace Ookii.Dialogs.WinForms
         /// </remarks>
         public bool IsStoredCredential { get; private set; }
 
-
         /// <summary>
         /// Shows the credentials dialog as a modal dialog.
         /// </summary>
@@ -417,9 +422,9 @@ namespace Ookii.Dialogs.WinForms
         /// <exception cref="CredentialException">An error occurred while showing the credentials dialog.</exception>
         /// <exception cref="InvalidOperationException"><see cref="Target"/> is an empty string ("").</exception>
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
-        public DialogResult ShowDialog()
+        public DialogResult ShowDialog(int authError = 0)
         {
-            return ShowDialog(null);
+            return ShowDialog(null, authError);
         }
 
         /// <summary>
@@ -458,7 +463,7 @@ namespace Ookii.Dialogs.WinForms
         /// <exception cref="CredentialException">An error occurred while showing the credentials dialog.</exception>
         /// <exception cref="InvalidOperationException"><see cref="Target"/> is an empty string ("").</exception>
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
-        public DialogResult ShowDialog(IntPtr owner)
+        public DialogResult ShowDialog(IntPtr owner, int authError = 0)
         {
             if( string.IsNullOrEmpty(_target) )
                 throw new InvalidOperationException(Properties.Resources.CredentialEmptyTargetError);
@@ -490,9 +495,9 @@ namespace Ookii.Dialogs.WinForms
             IntPtr ownerHandle = owner == IntPtr.Zero ? NativeMethods.GetActiveWindow() : owner;
             bool result;
             if( NativeMethods.IsWindowsVistaOrLater )
-                result = PromptForCredentialsCredUIWin(ownerHandle, storedCredentials);
+                result = PromptForCredentialsCredUIWin(ownerHandle, storedCredentials, authError);
             else
-                result = PromptForCredentialsCredUI(ownerHandle, storedCredentials);
+                result = PromptForCredentialsCredUI(ownerHandle, storedCredentials, authError);
             return result ? DialogResult.OK : DialogResult.Cancel;
         }
 
@@ -532,14 +537,14 @@ namespace Ookii.Dialogs.WinForms
         /// <exception cref="CredentialException">An error occurred while showing the credentials dialog.</exception>
         /// <exception cref="InvalidOperationException"><see cref="Target"/> is an empty string ("").</exception>
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
-        public DialogResult ShowDialog(IWin32Window owner)
+        public DialogResult ShowDialog(IWin32Window owner, int authError = 0)
         {
             IntPtr ownerHandle;
             if( owner == null )
                 ownerHandle = NativeMethods.GetActiveWindow();
             else
                 ownerHandle = owner.Handle;
-            return ShowDialog(ownerHandle);
+            return ShowDialog(ownerHandle, authError);
         }
 
         /// <summary>
@@ -786,7 +791,7 @@ namespace Ookii.Dialogs.WinForms
                 PasswordChanged(this, e);
         }
 
-        private bool PromptForCredentialsCredUI(IntPtr owner, bool storedCredentials)
+        private bool PromptForCredentialsCredUI(IntPtr owner, bool storedCredentials, int authError)
         {
             NativeMethods.CREDUI_INFO info = CreateCredUIInfo(owner, true);
             NativeMethods.CREDUI_FLAGS flags = NativeMethods.CREDUI_FLAGS.GENERIC_CREDENTIALS | NativeMethods.CREDUI_FLAGS.DO_NOT_PERSIST | NativeMethods.CREDUI_FLAGS.ALWAYS_SHOW_UI;
@@ -798,7 +803,7 @@ namespace Ookii.Dialogs.WinForms
             StringBuilder pw = new StringBuilder(NativeMethods.CREDUI_MAX_PASSWORD_LENGTH);
             pw.Append(Password);
 
-            NativeMethods.CredUIReturnCodes result = NativeMethods.CredUIPromptForCredentials(ref info, Target, IntPtr.Zero, 0, user, NativeMethods.CREDUI_MAX_USERNAME_LENGTH, pw, NativeMethods.CREDUI_MAX_PASSWORD_LENGTH, ref _isSaveChecked, flags);
+            NativeMethods.CredUIReturnCodes result = NativeMethods.CredUIPromptForCredentials(ref info, Target, IntPtr.Zero, authError, user, NativeMethods.CREDUI_MAX_USERNAME_LENGTH, pw, NativeMethods.CREDUI_MAX_PASSWORD_LENGTH, ref _isSaveChecked, flags);
             switch( result )
             {
                 case NativeMethods.CredUIReturnCodes.NO_ERROR:
@@ -820,7 +825,7 @@ namespace Ookii.Dialogs.WinForms
             }
         }
 
-        private bool PromptForCredentialsCredUIWin(IntPtr owner, bool storedCredentials)
+        private bool PromptForCredentialsCredUIWin(IntPtr owner, bool storedCredentials, int authError)
         {
             NativeMethods.CREDUI_INFO info = CreateCredUIInfo(owner, false);
             NativeMethods.CredUIWinFlags flags = NativeMethods.CredUIWinFlags.Generic;
@@ -845,7 +850,7 @@ namespace Ookii.Dialogs.WinForms
 
                 uint outBufferSize;
                 uint package = 0;
-                NativeMethods.CredUIReturnCodes result = NativeMethods.CredUIPromptForWindowsCredentials(ref info, 0, ref package, inBuffer, inBufferSize, out outBuffer, out outBufferSize, ref _isSaveChecked, flags);
+                NativeMethods.CredUIReturnCodes result = NativeMethods.CredUIPromptForWindowsCredentials(ref info, authError, ref package, inBuffer, inBufferSize, out outBuffer, out outBufferSize, ref _isSaveChecked, flags);
                 switch( result )
                 {
                 case NativeMethods.CredUIReturnCodes.NO_ERROR:
