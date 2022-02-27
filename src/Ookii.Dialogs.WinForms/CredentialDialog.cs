@@ -390,6 +390,7 @@ namespace Ookii.Dialogs.WinForms
         /// <summary>
         /// Shows the credentials dialog as a modal dialog.
         /// </summary>
+        /// <param name="authError">An optionally provided Windows error specifying why the credential dialog box is needed, for example <see cref="SEC_E_LOGON_DENIED"/>.</param>
         /// <returns><see cref="DialogResult.OK" /> if the user clicked OK; otherwise, <see cref="DialogResult.Cancel" />.</returns>
         /// <remarks>
         /// <para>
@@ -431,6 +432,7 @@ namespace Ookii.Dialogs.WinForms
         /// Shows the credentials dialog as a modal dialog with the specified owner.
         /// </summary>
         /// <param name="owner">The <see cref="IntPtr"/> Win32 handle that owns the credentials dialog.</param>
+        /// <param name="authError">An optionally provided Windows error specifying why the credential dialog box is needed, for example <see cref="SEC_E_LOGON_DENIED"/>.</param>
         /// <returns><see cref="DialogResult.OK" /> if the user clicked OK; otherwise, <see cref="DialogResult.Cancel" />.</returns>
         /// <remarks>
         /// <para>
@@ -505,6 +507,7 @@ namespace Ookii.Dialogs.WinForms
         /// Shows the credentials dialog as a modal dialog with the specified owner.
         /// </summary>
         /// <param name="owner">The <see cref="IWin32Window"/> that owns the credentials dialog.</param>
+        /// <param name="authError">An optionally provided Windows error specifying why the credential dialog box is needed, for example <see cref="SEC_E_LOGON_DENIED"/>.</param>
         /// <returns><see cref="DialogResult.OK" /> if the user clicked OK; otherwise, <see cref="DialogResult.Cancel" />.</returns>
         /// <remarks>
         /// <para>
