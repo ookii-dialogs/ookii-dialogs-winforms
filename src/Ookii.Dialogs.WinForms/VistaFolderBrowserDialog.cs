@@ -62,8 +62,17 @@ namespace Ookii.Dialogs.WinForms
         /// Creates a new instance of the <see cref="VistaFolderBrowserDialog" /> class.
         /// </summary>
         public VistaFolderBrowserDialog()
+            : this(false)
         {
-            if( !IsVistaFolderDialogSupported )
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="VistaFolderBrowserDialog" /> class.
+        /// </summary>
+        /// <param name="forceDownlevel">When <see langword="true"/>, the old style common file dialog will always be used even if the OS supports the Vista style.</param>
+        public VistaFolderBrowserDialog(bool forceDownlevel)
+        {
+            if (forceDownlevel || !IsVistaFolderDialogSupported)
                 _downlevelDialog = new FolderBrowserDialog();
             else
                 Reset();
@@ -303,22 +312,13 @@ namespace Ookii.Dialogs.WinForms
                 }
             }
 
-            dialog.SetOptions(NativeMethods.FOS.FOS_PICKFOLDERS | NativeMethods.FOS.FOS_FORCEFILESYSTEM | NativeMethods.FOS.FOS_FILEMUSTEXIST);
-
-            if( !string.IsNullOrEmpty(_selectedPath) )
+            // Set the default directory
+            if (Directory.Exists(_selectedPath))
             {
-                string parent = Path.GetDirectoryName(_selectedPath);
-                if( parent == null || !Directory.Exists(parent) )
-                {
-                    dialog.SetFileName(_selectedPath);
-                }
-                else
-                {
-                    string folder = Path.GetFileName(_selectedPath);
-                    dialog.SetFolder(NativeMethods.CreateItemFromParsingName(parent));
-                    dialog.SetFileName(folder);
-                }
+                dialog.SetFolder(NativeMethods.CreateItemFromParsingName(_selectedPath));
             }
+
+            dialog.SetOptions(NativeMethods.FOS.FOS_PICKFOLDERS | NativeMethods.FOS.FOS_FORCEFILESYSTEM | NativeMethods.FOS.FOS_FILEMUSTEXIST);
         }
 
         private void GetResult(Ookii.Dialogs.WinForms.Interop.IFileDialog dialog)
